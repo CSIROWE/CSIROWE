@@ -104,7 +104,7 @@ class Member():
     def printLocation(self):
         print(self.id, ":", "%.1f" % self.location[0], "%.1f" % self.location[1])
 
-#MYCODE
+#MYCODE - This part has been moved from class population to class members
     def findNearbyMembers(self, nearDistance=float):
         nearList = []
         for member in self.members:
@@ -261,13 +261,13 @@ def main():
         ax.scatter([member.location[0] for member in population.members], 
             [member.location[1] for member in population.members],
             c=[member.id for member in population.members], cmap='rainbow')
-#MYCODE
+#MYCODE - variable nearestDistance has been changed to variable nearDistnace
         while True:
             for member in population.members:   
                 member.moveInRandom(space)
                 nearList = member.findNearbyMembers(nearDistance)
                 member.findNearestMemberLocations(nearList, nearDistnace)
-#MYCODE
+#MYCODE - PLEASE READ - When this code runs now, it shows an error within line 110-ish, that says member has no attribute members. To combat this we might have to once again reposition the funciton, but tinker around with it and see if you can find a better solution :)
 
     # makeChart()
     animator = ani.FuncAnimation(fig, makeChart, interval=100)
